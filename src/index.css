@@ -1,0 +1,182 @@
+/* ☁ DAY THEME WITH TWO FLOATING CLOUDS */
+.day {
+  background: linear-gradient(to bottom, #87cefa, #fada69);
+  position: relative;
+  overflow: hidden;
+}
+
+/* TOP-LEFT CLOUD */
+.day::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 160px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50px;
+  box-shadow:
+    35px -12px 0 10px rgba(255,255,255,0.9),
+    75px 0 0 18px rgba(255,255,255,0.9);
+  filter: blur(0.5px);
+}
+
+/* TOP-RIGHT CLOUD */
+.day::after {
+  content: "";
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  width: 160px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50px;
+  box-shadow:
+    35px -12px 0 10px rgba(255,255,255,0.9),
+    75px 0 0 18px rgba(255,255,255,0.9);
+  filter: blur(0.5px);
+}
+/* Sun gentle glow */
+
+
+/* 🌙 NIGHT THEME */
+.night {
+  background: linear-gradient(to bottom, #0a0f24, #131a33);
+  position: relative;
+}
+
+/* star cluster effect */
+.night::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20% 35%, white 60%, transparent),
+    radial-gradient(2px 2px at 55% 15%, white 60%, transparent),
+    radial-gradient(2px 2px at 70% 45%, white 60%, transparent),
+    radial-gradient(2px 2px at 30% 70%, white 60%, transparent),
+    radial-gradient(2px 2px at 85% 55%, white 60%, transparent),
+    radial-gradient(2px 2px at 45% 85%, white 60%, transparent),
+    radial-gradient(2px 2px at 10% 60%, white 60%, transparent);
+  animation: starBlink 2.6s infinite ease-in-out alternate;
+}
+
+/* twinkling stars */
+@keyframes starBlink {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+.weather-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 12px 12px;
+  color: white;
+  text-shadow: 0 0 4px rgba(0,0,0,0.6);
+}* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #d9e8ff;
+}
+
+/* MAIN CONTAINER */
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+  padding: 20px;
+}
+
+/* CARD */
+.weather-card {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 35px;
+  width: 430px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* INPUT */
+#inp {
+  width: 260px;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+  background: rgba(255,255,255,0.7);
+}
+
+#inp::placeholder {
+  color: #555;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #4f9eff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 10px;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #2f7ee9;
+}
+.weather-icon {
+  width: 150px;
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+.weather-details {
+  margin-top: 25px;
+}
+
+.weather-text {
+  font-size: 1.35rem;
+  margin: 8px 0;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  background: linear-gradient(90deg, #cde7ff, #ffffff, #cde7ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.22);
+  opacity: 0;
+  animation: fadeSlide 0.6s ease-out forwards;
+}
+
+.weather-text.humidity { animation-delay: 0.25s; }
+.weather-text.wind { animation-delay: 0.45s; }
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0px); }
+}
